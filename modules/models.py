@@ -19,6 +19,7 @@ class InstanceType(models.Model):
 class VPC(models.Model):
     vpc_id = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
+    extra_info = models.JSONField(null=True, editable=False)
 
     def __str__(self):
         return f"({self.vpc_id}) - {self.name}"
@@ -26,7 +27,10 @@ class VPC(models.Model):
 
 class Subnet(models.Model):
     name = models.CharField(max_length=100)
+    subnet_id = models.CharField(max_length=100)
     vpc = models.ForeignKey(VPC, on_delete=models.CASCADE)
+    availability_zone = models.CharField(max_length=100)
+    extra_info = models.JSONField(null=True)
 
     def __str__(self):
         return f"{self.name} - ({self.vpc.vpc_id})"

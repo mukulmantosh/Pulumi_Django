@@ -1,4 +1,4 @@
-name: pythonaws
+name: aws-python
 description: Django App for managing AWS resources using Pulumi
 runtime:
     name: python
