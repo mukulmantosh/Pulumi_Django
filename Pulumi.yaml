@@ -1,0 +1,6 @@
+name: pythonaws
+description: Django App for managing AWS resources using Pulumi
+runtime:
+    name: python
+    options:
+        virtualenv: venv
