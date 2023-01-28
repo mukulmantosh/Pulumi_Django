@@ -1,8 +1,6 @@
 import boto3
 from django.core.management.base import BaseCommand
 
-from employee_resources.management.commands import vpc, subnets
-
 
 def ec2_instance_types(region_name):
     '''Yield all available EC2 instance types in region <region_name>'''
@@ -14,6 +12,7 @@ def ec2_instance_types(region_name):
         if 'NextToken' not in describe_result:
             break
         describe_args['NextToken'] = describe_result['NextToken']
+
 
 class Command(BaseCommand):
     help = 'Load AWS Resource Information into DB'
@@ -29,8 +28,6 @@ class Command(BaseCommand):
         ec2_client = boto3.client('ec2', region_name='ap-southeast-1')  # Change as appropriate
         images = ec2_client.describe_images(Owners=['self'])
         print(images)
-
-
 
         # ec2 = boto3.client('ec2')
         # response = ec2.describe_vpcs()
