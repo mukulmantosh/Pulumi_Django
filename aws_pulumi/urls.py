@@ -19,7 +19,7 @@ from modules.views import DataView, SecurityGroupView
 from employee_resources.views import CreatEC2ResourceView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('data/', DataView.as_view())
+    path('data/', DataView.as_view()),
     path('sg/', SecurityGroupView.as_view()),
     path('ec2-create/', CreatEC2ResourceView.as_view())
 
