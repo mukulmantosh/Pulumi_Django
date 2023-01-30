@@ -2,7 +2,7 @@ from django.db import models
 
 
 class OperatingSystem(models.Model):
-    name = models.CharField(max_length=500, unique=True)
+    name = models.CharField(max_length=500)
     architecture = models.CharField(max_length=100, null=True)
     image_id = models.CharField(max_length=100, null=True)
     expiry = models.DateTimeField(null=True)
@@ -12,9 +12,8 @@ class OperatingSystem(models.Model):
 
 
 class InstanceType(models.Model):
-    operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE)
-    short_name = models.CharField(max_length=50, null=True)
     name = models.CharField(max_length=50, unique=True)
+    architecture = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.name
