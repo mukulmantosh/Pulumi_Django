@@ -1,7 +1,9 @@
 from datetime import datetime
 
-from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.db import models
+
 from modules.models import SecurityGroup, VPC, Subnet, KeyPair, OperatingSystem, InstanceType
 
 
@@ -24,3 +26,8 @@ class EC2Resources(models.Model):
     class Meta:
         verbose_name_plural = "EC2_Resources"
         verbose_name = "Elastic Compute (EC2)"
+
+    def clean(self):
+        if self.instance_type.architecture != self.operating_system.architecture:
+            raise ValidationError("Architecture Mismatch !!! "
+                                  "Instance Type and Operating System Architecture does not match.")

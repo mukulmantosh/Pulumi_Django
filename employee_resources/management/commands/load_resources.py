@@ -18,4 +18,5 @@ class Command(BaseCommand):
         # subnets.retrieve_subnet_info(self)
         # retrieve_instance_types(self)
         # retrieve_security_group_info(self)
-        retrieve_key_pairs(self)
+        #retrieve_key_pairs(self)
+        retrieve_instance_types(self)

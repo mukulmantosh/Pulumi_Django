@@ -15,6 +15,8 @@ class InstanceType(models.Model):
     name = models.CharField(max_length=50, unique=True)
     architecture = models.CharField(max_length=100, null=True)
 
+    class Meta:
+        ordering = ['architecture']
     def __str__(self):
         return self.name
 

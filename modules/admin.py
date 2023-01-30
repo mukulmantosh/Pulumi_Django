@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.InstanceType)
 admin.site.register(models.VPC)
 admin.site.register(models.Subnet)
 admin.site.register(models.SecurityGroup)
@@ -14,4 +13,10 @@ class OperatingSystemAdmin(admin.ModelAdmin):
     list_display = ['name', 'architecture', 'image_id', 'expiry']
 
 
+class InstanceTypeAdmin(admin.ModelAdmin):
+    model = models.InstanceType
+    list_display = ['name', 'architecture']
+
+
 admin.site.register(models.OperatingSystem, OperatingSystemAdmin)
+admin.site.register(models.InstanceType, InstanceTypeAdmin)
