@@ -9,3 +9,4 @@ class EC2ResourcesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.EC2Resources, EC2ResourcesAdmin)
+admin.site.site_header = 'AWS Resource Management'
