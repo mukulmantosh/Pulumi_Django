@@ -13,10 +13,12 @@ def create_pulumi_program(subnet_id, security_group_id, operating_system, instan
     ami = aws.ec2.get_ami(
         most_recent=True,
         owners=["amazon"],
-        filters=[{"name": "name", "values": ['amzn2-ami-hvm-2.0.20221210.1-arm64-gp2']}],
+        filters=[
+            {"name": "name", "values": [operating_system]}
+        ],
     )
 
-
+    print("NAME IS ", ami.image_id)
     instance = aws.ec2.Instance(
         "temp-em664-webapp",
         instance_type=instance_type,
@@ -36,7 +38,7 @@ class CreatEC2ResourceView(View):
     def get(self, request):
         ec2_resource = EC2Resources.objects.first()
         vpc_id = ec2_resource.vpc.vpc_id
-        subnet_id = ec2_resource.subnet.name
+        subnet_id = ec2_resource.subnet.subnet_id
         security_group_id = ec2_resource.security_group.security_group_id
         operating_system = ec2_resource.operating_system.name
         instance_type = ec2_resource.instance_type.name
@@ -48,16 +50,16 @@ class CreatEC2ResourceView(View):
                                          key_pair)
 
         stack = auto.select_stack(stack_name="dev",
-                                  project_name="pythonaws",
+                                  project_name="aws-python",
                                   program=pulumi_program)
         stack.set_config("aws:region", auto.ConfigValue("ap-south-1"))
         # deploy the stack, tailing the logs to stdout
-        up_res = stack.up(on_output=print)
+        up_res = stack.destroy(on_output=print)
 
-        print(up_res.outputs["web-app-ip"])
-
-        ec2_resource.resource_information = up_res.outputs["web-app-ip"]
+        # print(up_res.outputs["web-app-ip"])
+        #
+        # ec2_resource.resource_information = up_res.outputs["web-app-ip"]
         ec2_resource.resource_allocation_on = datetime.now()
-        ec2_resource.status = "SUCCESS"
+        ec2_resource.status = "DELETED"
         ec2_resource.save()
         return HttpResponse("It Works !")
