@@ -73,6 +73,25 @@ Run the below command :
 ![step6](./misc/images/step6.png)
 
 
+## AWS Credentials
+
+Make sure to update your AWS credentials, residing in **$HOME/.aws/credentials**
+
+* Note: For this demo, make sure the IAM User should have **AdministratorAccess**. This is not **recommended** permission you need to give. Kindly, follow the security best practices.
+
+```
+[default]
+aws_access_key_id = xxxxxxxxxxxxxxxxxxxxx
+aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxx
+```
+
+
+## Loading AWS Resources
+
+
+
+
+
 
 
 
