@@ -102,6 +102,24 @@ This command is going to dump all the AWS resources into your database.
 
 ![step7](./misc/images/step7.png)
 
+## Logging into Django Admin
+
+![step8](./misc/images/step8.png)
+
+![step9](./misc/images/step9.png)
+
+
+### Instance Types
+
+![step10](./misc/images/step10.png)
+
+### Operating Systems
+
+![step11](./misc/images/step11.png)
+
+
+## Creating an EC2 Instance
+
 
 
 
