@@ -107,11 +107,14 @@ This command is going to dump all the AWS resources into your database.
 
 ## Logging into Django Admin
 
+Provide the superuser credentials, which you have created recently.
+
 ![step8](./misc/images/step8.png)
+
 
 ![step9](./misc/images/step9.png)
 
-
+You can now observe that all the AWS information has been dumped in our database, and it's reflected in the admin.
 ### Instance Types
 
 ![step10](./misc/images/step10.png)
