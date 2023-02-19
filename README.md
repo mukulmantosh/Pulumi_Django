@@ -120,7 +120,22 @@ This command is going to dump all the AWS resources into your database.
 
 ## Creating an EC2 Instance
 
+![step12](./misc/images/step12.png)
 
+![step13](./misc/images/step13.png)
+
+![step14](./misc/images/step14.png)
+
+
+## Deleting an EC2 Instance
+
+![step15](./misc/images/step15.png)
+
+
+![step16](./misc/images/step16.png)
+
+
+![step17](./misc/images/step17.png)
 
 
 
