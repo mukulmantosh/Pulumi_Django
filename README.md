@@ -55,10 +55,30 @@ Run the below command :
 
 
 
+## Migrating Tables
+
+Run the below command :
+
+- **python manage.py migrate**
+
+![step5](./misc/images/step5.png)
+
+
+## Creating SuperUser
+
+Run the below command : 
+
+- **python manage.py createsuperuser**
+
+![step6](./misc/images/step6.png)
+
+
+
+
 
 ## References
 
 If you are interested to know more about Pulumi.
 
-- [Developing Serverless APIs using AWS Toolkit](https://www.jetbrains.com/pycharm/guide/tutorials/intro-aws/)
-- [Developing Django Application using AWS NICE DCV, high-performance remote desktop and application streaming](https://www.jetbrains.com/pycharm/guide/tutorials/django-aws/) 
+- [How to use Pulumi YAML](https://www.pulumi.com/docs/intro/languages/yaml/)
+- [Pulumi Automation API](https://www.pulumi.com/automation/) 
