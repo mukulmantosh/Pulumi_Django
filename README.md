@@ -25,6 +25,9 @@ $ pip install -r requirements.txt
 
 ```
 
+* Note: For our project we are using **db.sqlite3**. I strongly recommend to use Postgres/MySQL when setting up in production. 
+
+
 ## Pulumi Stack
 
 Login to Pulumi and create a new project.
@@ -120,7 +123,13 @@ This command is going to dump all the AWS resources into your database.
 
 ## Creating an EC2 Instance
 
+We will provide all the necessary information for creating EC2 Instance.
+
+* Note: Pulumi will be invoked in the foreground, I recommend using background tasks like Celery & RabbitMQ
+
 ![step12](./misc/images/step12.png)
+
+You can see below, that the instance has been created and the Public IPv4 address has been updated.
 
 ![step13](./misc/images/step13.png)
 
@@ -129,8 +138,11 @@ This command is going to dump all the AWS resources into your database.
 
 ## Deleting an EC2 Instance
 
+Now, we will go ahead and delete the instance information from Django Admin
+
 ![step15](./misc/images/step15.png)
 
+You can observe the django console, that Pulumi has started the process to terminate the instance.
 
 ![step16](./misc/images/step16.png)
 
