@@ -88,8 +88,19 @@ aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxx
 
 ## Loading AWS Resources
 
+Run the below command : 
+
+- **python manage.py load_resources**
+
+This command is going to dump all the AWS resources into your database.
+- VPC
+- Subnets
+- Security Groups
+- Key Pair
+- Instance Types
 
 
+![step7](./misc/images/step7.png)
 
 
 
