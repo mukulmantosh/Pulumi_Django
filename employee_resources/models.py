@@ -1,14 +1,15 @@
 from datetime import datetime
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from pulumi import automation as auto
 
 from employee_resources.pulumi.utils import create_pulumi_program
 from modules.models import SecurityGroup, VPC, Subnet, KeyPair, OperatingSystem, InstanceType
-from pulumi import automation as auto
 
 
 class EC2Resources(models.Model):
@@ -52,8 +53,8 @@ def create_ec2_resource(sender, instance, **kwargs):
         return create_pulumi_program(subnet_id, security_group_id, operating_system, instance_type,
                                      key_pair)
 
-    stack = auto.select_stack(stack_name="dev",  # <- Stack Name
-                              project_name="aws-python",  # <- Name of the Pulumi Project
+    stack = auto.select_stack(stack_name=settings.PULUMI_STACK_NAME,  # <- Stack Name
+                              project_name=settings.PULUMI_PROJECT_NAME,  # <- Name of the Pulumi Project
                               program=pulumi_program)
     stack.set_config("aws:region", auto.ConfigValue("ap-south-1"))
 
@@ -77,8 +78,8 @@ def delete_ec2_resource(sender, instance, **kwargs):
         return create_pulumi_program(subnet_id, security_group_id, operating_system, instance_type,
                                      key_pair)
 
-    stack = auto.select_stack(stack_name="dev",  # <- Stack Name
-                              project_name="aws-python",  # <- Name of the Pulumi Project
+    stack = auto.select_stack(stack_name=settings.PULUMI_STACK_NAME,  # <- Stack Name
+                              project_name=settings.PULUMI_PROJECT_NAME,  # <- Name of the Pulumi Project
                               program=pulumi_program)
     stack.set_config("aws:region", auto.ConfigValue("ap-south-1"))
 

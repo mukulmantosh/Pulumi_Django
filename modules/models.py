@@ -17,6 +17,7 @@ class InstanceType(models.Model):
 
     class Meta:
         ordering = ['architecture']
+
     def __str__(self):
         return self.name
 

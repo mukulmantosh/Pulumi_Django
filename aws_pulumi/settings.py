@@ -38,6 +38,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+PULUMI_STACK_NAME = "dev"
+PULUMI_PROJECT_NAME = "aws-python"
+
 # Application definition
 
 INSTALLED_APPS = [
